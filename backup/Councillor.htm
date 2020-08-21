@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Find your Hackney Councillor</title>
+    <LINK media=screen href="http://www.hackney.gov.uk/hlive5/default.css" type=text/css rel=stylesheet>
+  <style type="text/css">
+	body {
+		text-align: center;
+						
+	}
+	#maindiv {
+		margin: 0 auto;   
+		text-align: left; 
+		width: 80%;
+		top:80%;
+	}
+	a {
+	    text-decoration: none;
+	    color:#006666;
+	    font-weight:bold !important;
+	}
+	
+	a:hover{
+	    text-decoration: underline;
+	}
+	
+	
+    </style>      
+   
+</head>
+<body>
+    <div style="height: 100px;">
+    </div>
+    <div id="maindiv" style="width: 660px; height: 400px;">
+    <div id="txtdiv" style="width: 440px; height: 20px;
+            z-index: 102;text-align:center;">
+        <p style="font-size: 10pt; text-align: left">
+            This is just an example showing how it looks with the Hackney Style sheet.<br />
+            To see how it looks without the Hackney style sheet go <a href="NoStyle.htm" style="text-decoration: underline">
+                here</a></p>
+    </div>
+        <div id='textBox' style="z-index: 100; left: 300px; width: 305px; position: relative;
+            top: 20px; height: 100px">
+            <p style="text-align: left;">
+                Copy the the code below and paste it into the html for your page</p>
+            <textarea name="textarea" onfocus="this.select()" style="width: 335px; height: 95px;">
+<div id='councilDiv'></div> 
+
+                <script language='javascript' src='https://map.hackney.gov.uk/FindCouncillor/CouncilorScript.aspx' type='text/javascript'></script>
+</textarea>
+        </div>
+        <div id="containerDiv" style="left: 5px; top: -123px; width: 285px; height: 285px;
+            z-index: 101; position: relative;">
+            <div id='councilDiv' style="top:50px;position:relative;width:200;height:200px;">
+            </div>
+
+            <script language='javascript' src='https://map.hackney.gov.uk/FindCouncillor/CouncilorScript.aspx' type='text/javascript'></script>
+            <!--<script language='javascript' src='http://lbhgiswebt01/FindCouncillor/CouncilorScript.aspx' type='text/javascript'></script>-->
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,2342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.hackney.gov.uk/SearchLLPG" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s1="http://www.hackney.gov.uk/SearchLLPG/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.hackney.gov.uk/SearchLLPG" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Address look-up service using Hackneys LLPG.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.hackney.gov.uk/SearchLLPG">
+      <s:element name="Get_Connection">
+        <s:complexType />
+      </s:element>
+      <s:element name="Get_ConnectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_ConnectionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindStreetByUSRN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iUSRN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindStreetByUSRNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindStreetByUSRNResult" type="tns:ArrayOfNLPGStreet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNLPGStreet">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NLPGStreet" nillable="true" type="tns:NLPGStreet" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NLPGStreet">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="sName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="iUSRN" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="sCounty" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sTown" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sLoc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="iAuth" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="sStartDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sEndDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="iStartX" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iStartY" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iEndX" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iEndY" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindAddressByUPRN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iUPRN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressByUPRNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAddressByUPRNResult" type="tns:ArrayOfNLPGAddress" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNLPGAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NLPGAddress" nillable="true" type="tns:NLPGAddress" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NLPGAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="sFlat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sBld" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sPC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Locality1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Locality2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Locality3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="iUSRN" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iUPRN" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="LPI_ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="iX" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iY" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iLPIstat" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="iBLPUstat" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="sUSAGE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="iValue" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="sOrg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sClass" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="iRPA" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iState" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="sCalc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="xrefs" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="parent" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindStreet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="street" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindStreetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindStreetResult" type="tns:ArrayOfNLPGStreet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usrn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="num1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="num2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bld" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAddressResult" type="tns:ArrayOfNLPGAddress" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="str" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAddressExResult" type="tns:ArrayOfNLPGAddress" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressByUSRN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iUSRN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressByUSRNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAddressByUSRNResult" type="tns:ArrayOfNLPGAddress" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressByLines">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddressName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Line1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Line2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Line3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PostCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressByLinesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAddressByLinesResult" type="tns:ArrayOfNLPGAddress" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStreetsBeginingWith">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="str" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStreetsBeginingWithResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStreetsBeginingWithResult" type="tns:ArrayOfNLPGStreet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindMyNearestService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="iX" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="iY" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="sClass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindMyNearestServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindMyNearestServiceResult" type="tns:ArrayOfNLPGAddress" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressesByUPRNsStr">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPRNs" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressesByUPRNsStrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAddressesByUPRNsStrResult" type="tns:ArrayOfNLPGAddress" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressesByUPRNs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPRNs" type="tns:ArrayOfLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLong">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="long" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAddressesByUPRNsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAddressesByUPRNsResult" type="tns:ArrayOfNLPGAddress" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressByCrossRef">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sSource" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sVal" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressByCrossRefResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAddressByCrossRefResult" type="tns:ArrayOfNLPGAddress" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHighlights">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetHighlightsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHighlightsResult" type="tns:ArrayOfNLPGAddress" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCrossReferences">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iUPRN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCrossReferencesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCrossReferencesResult" type="tns:ArrayOfPropAttribute" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPropAttribute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PropAttribute" nillable="true" type="tns:PropAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PropAttribute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPropertyAttributes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iUPRN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPropertyAttributesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPropertyAttributesResult" type="tns:ArrayOfPropAttribute" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPropertyAttributes2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iUPRN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPropertyAttributes2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPropertyAttributes2Result" type="tns:propertyAttributesEx" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="propertyAttributesEx">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="propertyAttributes" type="tns:ArrayOfArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="orgDetails" type="tns:ArrayOfOrganisation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOrganisation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="organisation" nillable="true" type="tns:organisation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="organisation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OrgName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="details" type="tns:ArrayOfArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetHighlightsJSONtree">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetHighlightsJSONtreeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHighlightsJSONtreeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressJSONtree">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="page" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressJSONtreeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAddressJSONtreeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressJSONtreeTheme">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="page" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iTheme" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressJSONtreeThemeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAddressJSONtreeThemeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressCSV">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAddressCSVResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAddressCSVResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCouncilorHTML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddressOrPostcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCouncilorHTMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCouncilorHTMLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNearestStreet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="isGeo" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="numRecs" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNearestStreetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNearestStreetResult" type="tns:ArrayOfNLPGStreet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNearestAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="isGeo" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="numRecs" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNearestAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNearestAddressResult" type="tns:ArrayOfNLPGAddress" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWardPostcodeStreetList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="streetname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWardPostcodeStreetListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWardPostcodeStreetListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCouncilorsJSON">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCouncilorsJSONResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCouncilorsJSONResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfNLPGStreet" nillable="true" type="tns:ArrayOfNLPGStreet" />
+      <s:element name="ArrayOfNLPGAddress" nillable="true" type="tns:ArrayOfNLPGAddress" />
+      <s:element name="ArrayOfPropAttribute" nillable="true" type="tns:ArrayOfPropAttribute" />
+      <s:element name="propertyAttributesEx" type="tns:propertyAttributesEx" />
+      <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+    </s:schema>
+    <s:schema targetNamespace="http://www.hackney.gov.uk/SearchLLPG/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Get_ConnectionSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Connection" />
+  </wsdl:message>
+  <wsdl:message name="Get_ConnectionSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_ConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindStreetByUSRNSoapIn">
+    <wsdl:part name="parameters" element="tns:FindStreetByUSRN" />
+  </wsdl:message>
+  <wsdl:message name="FindStreetByUSRNSoapOut">
+    <wsdl:part name="parameters" element="tns:FindStreetByUSRNResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByUPRNSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAddressByUPRN" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByUPRNSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAddressByUPRNResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindStreetSoapIn">
+    <wsdl:part name="parameters" element="tns:FindStreet" />
+  </wsdl:message>
+  <wsdl:message name="FindStreetSoapOut">
+    <wsdl:part name="parameters" element="tns:FindStreetResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAddress" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressExSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAddressEx" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressExSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAddressExResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByUSRNSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAddressByUSRN" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByUSRNSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAddressByUSRNResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByLinesSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAddressByLines" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByLinesSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAddressByLinesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStreetsBeginingWithSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStreetsBeginingWith" />
+  </wsdl:message>
+  <wsdl:message name="GetStreetsBeginingWithSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStreetsBeginingWithResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindMyNearestServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:FindMyNearestService" />
+  </wsdl:message>
+  <wsdl:message name="FindMyNearestServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:FindMyNearestServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressesByUPRNsStrSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAddressesByUPRNsStr" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressesByUPRNsStrSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAddressesByUPRNsStrResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressesByUPRNsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAddressesByUPRNs" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressesByUPRNsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAddressesByUPRNsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressByCrossRefSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAddressByCrossRef" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressByCrossRefSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAddressByCrossRefResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHighlightsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHighlights" />
+  </wsdl:message>
+  <wsdl:message name="GetHighlightsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHighlightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCrossReferencesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCrossReferences" />
+  </wsdl:message>
+  <wsdl:message name="GetCrossReferencesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCrossReferencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyAttributesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPropertyAttributes" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyAttributesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPropertyAttributesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyAttributes2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetPropertyAttributes2" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyAttributes2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetPropertyAttributes2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetHighlightsJSONtreeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHighlightsJSONtree" />
+  </wsdl:message>
+  <wsdl:message name="GetHighlightsJSONtreeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHighlightsJSONtreeResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressJSONtreeSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAddressJSONtree" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressJSONtreeSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAddressJSONtreeResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressJSONtreeThemeSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAddressJSONtreeTheme" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressJSONtreeThemeSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAddressJSONtreeThemeResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressCSVSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAddressCSV" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressCSVSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAddressCSVResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCouncilorHTMLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCouncilorHTML" />
+  </wsdl:message>
+  <wsdl:message name="GetCouncilorHTMLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCouncilorHTMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNearestStreetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNearestStreet" />
+  </wsdl:message>
+  <wsdl:message name="GetNearestStreetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNearestStreetResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNearestAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNearestAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetNearestAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNearestAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWardPostcodeStreetListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWardPostcodeStreetList" />
+  </wsdl:message>
+  <wsdl:message name="GetWardPostcodeStreetListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWardPostcodeStreetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCouncilorsJSONSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCouncilorsJSON" />
+  </wsdl:message>
+  <wsdl:message name="GetCouncilorsJSONSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCouncilorsJSONResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_ConnectionHttpGetIn" />
+  <wsdl:message name="Get_ConnectionHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FindStreetByUSRNHttpGetIn">
+    <wsdl:part name="iUSRN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindStreetByUSRNHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGStreet" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByUPRNHttpGetIn">
+    <wsdl:part name="iUPRN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByUPRNHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="FindStreetHttpGetIn">
+    <wsdl:part name="street" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindStreetHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGStreet" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressHttpGetIn">
+    <wsdl:part name="usrn" type="s:string" />
+    <wsdl:part name="num1" type="s:string" />
+    <wsdl:part name="num2" type="s:string" />
+    <wsdl:part name="bld" type="s:string" />
+    <wsdl:part name="pc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressExHttpGetIn">
+    <wsdl:part name="str" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressExHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByUSRNHttpGetIn">
+    <wsdl:part name="iUSRN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByUSRNHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByLinesHttpGetIn">
+    <wsdl:part name="AddressName" type="s:string" />
+    <wsdl:part name="Line1" type="s:string" />
+    <wsdl:part name="Line2" type="s:string" />
+    <wsdl:part name="Line3" type="s:string" />
+    <wsdl:part name="City" type="s:string" />
+    <wsdl:part name="PostCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByLinesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetStreetsBeginingWithHttpGetIn">
+    <wsdl:part name="str" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStreetsBeginingWithHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGStreet" />
+  </wsdl:message>
+  <wsdl:message name="FindMyNearestServiceHttpGetIn">
+    <wsdl:part name="iX" type="s:string" />
+    <wsdl:part name="iY" type="s:string" />
+    <wsdl:part name="sClass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindMyNearestServiceHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressesByUPRNsStrHttpGetIn">
+    <wsdl:part name="UPRNs" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressesByUPRNsStrHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressesByUPRNsHttpGetIn">
+    <wsdl:part name="UPRNs" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressesByUPRNsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressByCrossRefHttpGetIn">
+    <wsdl:part name="sSource" type="s:string" />
+    <wsdl:part name="sVal" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressByCrossRefHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetHighlightsHttpGetIn" />
+  <wsdl:message name="GetHighlightsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetCrossReferencesHttpGetIn">
+    <wsdl:part name="iUPRN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCrossReferencesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPropAttribute" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyAttributesHttpGetIn">
+    <wsdl:part name="iUPRN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyAttributesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPropAttribute" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyAttributes2HttpGetIn">
+    <wsdl:part name="iUPRN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyAttributes2HttpGetOut">
+    <wsdl:part name="Body" element="tns:propertyAttributesEx" />
+  </wsdl:message>
+  <wsdl:message name="GetHighlightsJSONtreeHttpGetIn" />
+  <wsdl:message name="GetHighlightsJSONtreeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressJSONtreeHttpGetIn">
+    <wsdl:part name="address" type="s:string" />
+    <wsdl:part name="page" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressJSONtreeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressJSONtreeThemeHttpGetIn">
+    <wsdl:part name="address" type="s:string" />
+    <wsdl:part name="page" type="s:string" />
+    <wsdl:part name="iTheme" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressJSONtreeThemeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressCSVHttpGetIn">
+    <wsdl:part name="address" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressCSVHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCouncilorHTMLHttpGetIn">
+    <wsdl:part name="AddressOrPostcode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCouncilorHTMLHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNearestStreetHttpGetIn">
+    <wsdl:part name="x" type="s:string" />
+    <wsdl:part name="y" type="s:string" />
+    <wsdl:part name="isGeo" type="s:string" />
+    <wsdl:part name="numRecs" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNearestStreetHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGStreet" />
+  </wsdl:message>
+  <wsdl:message name="GetNearestAddressHttpGetIn">
+    <wsdl:part name="x" type="s:string" />
+    <wsdl:part name="y" type="s:string" />
+    <wsdl:part name="isGeo" type="s:string" />
+    <wsdl:part name="numRecs" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNearestAddressHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetWardPostcodeStreetListHttpGetIn">
+    <wsdl:part name="streetname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWardPostcodeStreetListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetCouncilorsJSONHttpGetIn" />
+  <wsdl:message name="GetCouncilorsJSONHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_ConnectionHttpPostIn" />
+  <wsdl:message name="Get_ConnectionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FindStreetByUSRNHttpPostIn">
+    <wsdl:part name="iUSRN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindStreetByUSRNHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGStreet" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByUPRNHttpPostIn">
+    <wsdl:part name="iUPRN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByUPRNHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="FindStreetHttpPostIn">
+    <wsdl:part name="street" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindStreetHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGStreet" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressHttpPostIn">
+    <wsdl:part name="usrn" type="s:string" />
+    <wsdl:part name="num1" type="s:string" />
+    <wsdl:part name="num2" type="s:string" />
+    <wsdl:part name="bld" type="s:string" />
+    <wsdl:part name="pc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressExHttpPostIn">
+    <wsdl:part name="str" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressExHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByUSRNHttpPostIn">
+    <wsdl:part name="iUSRN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByUSRNHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByLinesHttpPostIn">
+    <wsdl:part name="AddressName" type="s:string" />
+    <wsdl:part name="Line1" type="s:string" />
+    <wsdl:part name="Line2" type="s:string" />
+    <wsdl:part name="Line3" type="s:string" />
+    <wsdl:part name="City" type="s:string" />
+    <wsdl:part name="PostCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressByLinesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetStreetsBeginingWithHttpPostIn">
+    <wsdl:part name="str" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStreetsBeginingWithHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGStreet" />
+  </wsdl:message>
+  <wsdl:message name="FindMyNearestServiceHttpPostIn">
+    <wsdl:part name="iX" type="s:string" />
+    <wsdl:part name="iY" type="s:string" />
+    <wsdl:part name="sClass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindMyNearestServiceHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressesByUPRNsStrHttpPostIn">
+    <wsdl:part name="UPRNs" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressesByUPRNsStrHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressesByUPRNsHttpPostIn">
+    <wsdl:part name="UPRNs" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressesByUPRNsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressByCrossRefHttpPostIn">
+    <wsdl:part name="sSource" type="s:string" />
+    <wsdl:part name="sVal" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressByCrossRefHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetHighlightsHttpPostIn" />
+  <wsdl:message name="GetHighlightsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetCrossReferencesHttpPostIn">
+    <wsdl:part name="iUPRN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCrossReferencesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPropAttribute" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyAttributesHttpPostIn">
+    <wsdl:part name="iUPRN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyAttributesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPropAttribute" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyAttributes2HttpPostIn">
+    <wsdl:part name="iUPRN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyAttributes2HttpPostOut">
+    <wsdl:part name="Body" element="tns:propertyAttributesEx" />
+  </wsdl:message>
+  <wsdl:message name="GetHighlightsJSONtreeHttpPostIn" />
+  <wsdl:message name="GetHighlightsJSONtreeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressJSONtreeHttpPostIn">
+    <wsdl:part name="address" type="s:string" />
+    <wsdl:part name="page" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressJSONtreeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressJSONtreeThemeHttpPostIn">
+    <wsdl:part name="address" type="s:string" />
+    <wsdl:part name="page" type="s:string" />
+    <wsdl:part name="iTheme" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressJSONtreeThemeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressCSVHttpPostIn">
+    <wsdl:part name="address" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindAddressCSVHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCouncilorHTMLHttpPostIn">
+    <wsdl:part name="AddressOrPostcode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCouncilorHTMLHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNearestStreetHttpPostIn">
+    <wsdl:part name="x" type="s:string" />
+    <wsdl:part name="y" type="s:string" />
+    <wsdl:part name="isGeo" type="s:string" />
+    <wsdl:part name="numRecs" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNearestStreetHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGStreet" />
+  </wsdl:message>
+  <wsdl:message name="GetNearestAddressHttpPostIn">
+    <wsdl:part name="x" type="s:string" />
+    <wsdl:part name="y" type="s:string" />
+    <wsdl:part name="isGeo" type="s:string" />
+    <wsdl:part name="numRecs" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNearestAddressHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNLPGAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetWardPostcodeStreetListHttpPostIn">
+    <wsdl:part name="streetname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWardPostcodeStreetListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetCouncilorsJSONHttpPostIn" />
+  <wsdl:message name="GetCouncilorsJSONHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="SearchLLPGserviceSoap">
+    <wsdl:operation name="Get_Connection">
+      <wsdl:input message="tns:Get_ConnectionSoapIn" />
+      <wsdl:output message="tns:Get_ConnectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindStreetByUSRN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of streets by entering a USRN</wsdl:documentation>
+      <wsdl:input message="tns:FindStreetByUSRNSoapIn" />
+      <wsdl:output message="tns:FindStreetByUSRNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUPRN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list properties by entering a UPRN</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressByUPRNSoapIn" />
+      <wsdl:output message="tns:FindAddressByUPRNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindStreet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of streets exactly matching the entered name</wsdl:documentation>
+      <wsdl:input message="tns:FindStreetSoapIn" />
+      <wsdl:output message="tns:FindStreetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties using individual address elements</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressSoapIn" />
+      <wsdl:output message="tns:FindAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressEx">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Enter street, number &amp; street, Building name, UPRN,USRN, or Postcode. This is the operation most used by calling applications to find an LLPG address.</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressExSoapIn" />
+      <wsdl:output message="tns:FindAddressExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUSRN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by entering the USRN of a street</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressByUSRNSoapIn" />
+      <wsdl:output message="tns:FindAddressByUSRNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByLines">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties. Convenience function provided for CRM to search by indivdual address elements</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressByLinesSoapIn" />
+      <wsdl:output message="tns:FindAddressByLinesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetsBeginingWith">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns list of streets begining with the entered text</wsdl:documentation>
+      <wsdl:input message="tns:GetStreetsBeginingWithSoapIn" />
+      <wsdl:output message="tns:GetStreetsBeginingWithSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindMyNearestService">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns list of properties that match the passed BLPU class, ordered by the distance from the passed coordinate</wsdl:documentation>
+      <wsdl:input message="tns:FindMyNearestServiceSoapIn" />
+      <wsdl:output message="tns:FindMyNearestServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNsStr">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties by matching the UPRNs extracted from a delimited string of UPRNs</wsdl:documentation>
+      <wsdl:input message="tns:GetAddressesByUPRNsStrSoapIn" />
+      <wsdl:output message="tns:GetAddressesByUPRNsStrSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNs">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties matching an array of long integers</wsdl:documentation>
+      <wsdl:input message="tns:GetAddressesByUPRNsSoapIn" />
+      <wsdl:output message="tns:GetAddressesByUPRNsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressByCrossRef">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties matching the entered cross reference source and its value</wsdl:documentation>
+      <wsdl:input message="tns:GetAddressByCrossRefSoapIn" />
+      <wsdl:output message="tns:GetAddressByCrossRefSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlights">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties that represent places of particular interest within Hackney</wsdl:documentation>
+      <wsdl:input message="tns:GetHighlightsSoapIn" />
+      <wsdl:output message="tns:GetHighlightsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCrossReferences">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of cross references associated with the entered UPRN</wsdl:documentation>
+      <wsdl:input message="tns:GetCrossReferencesSoapIn" />
+      <wsdl:output message="tns:GetCrossReferencesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of extra attributes associated with the entered UPRN</wsdl:documentation>
+      <wsdl:input message="tns:GetPropertyAttributesSoapIn" />
+      <wsdl:output message="tns:GetPropertyAttributesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes2">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of extra attributes associated with the entered UPRN</wsdl:documentation>
+      <wsdl:input message="tns:GetPropertyAttributes2SoapIn" />
+      <wsdl:output message="tns:GetPropertyAttributes2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlightsJSONtree">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties that represent places of particular interest within Hackney. Formatted as a Javascript Object Notation (JSON) array representing a tree structured result set</wsdl:documentation>
+      <wsdl:input message="tns:GetHighlightsJSONtreeSoapIn" />
+      <wsdl:output message="tns:GetHighlightsJSONtreeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtree">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Formatted as a Javascript Object Notation (JSON) array representing a paged tree structured result set.</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressJSONtreeSoapIn" />
+      <wsdl:output message="tns:FindAddressJSONtreeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtreeTheme">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Formatted as a Javascript Object Notation (JSON) array representing a paged tree structured result set. Results are JSON encoded coloured according to theme. Theme 1 = Cross reference, theme 2 = usage</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressJSONtreeThemeSoapIn" />
+      <wsdl:output message="tns:FindAddressJSONtreeThemeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressCSV">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Formatted as comma seperated values, CSV</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressCSVSoapIn" />
+      <wsdl:output message="tns:FindAddressCSVSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorHTML">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return councilor details for a given address or postcode. Formatted as HTML</wsdl:documentation>
+      <wsdl:input message="tns:GetCouncilorHTMLSoapIn" />
+      <wsdl:output message="tns:GetCouncilorHTMLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestStreet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Formatted as a Javascript Object Notation (JSON) array representing a paged tree structured result set.</wsdl:documentation>
+      <wsdl:input message="tns:GetNearestStreetSoapIn" />
+      <wsdl:output message="tns:GetNearestStreetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestAddress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return list of properties by distance from the entered coordinate. Specify if coordinates are geodetic / lat &amp; lon (isGeo = true) and how many records to be returned</wsdl:documentation>
+      <wsdl:input message="tns:GetNearestAddressSoapIn" />
+      <wsdl:output message="tns:GetNearestAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWardPostcodeStreetList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return list of post codes with street name and electoral ward. Optionally by street name</wsdl:documentation>
+      <wsdl:input message="tns:GetWardPostcodeStreetListSoapIn" />
+      <wsdl:output message="tns:GetWardPostcodeStreetListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorsJSON">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return all councilor details. Formatted as Javascript Object Notation (JSON)</wsdl:documentation>
+      <wsdl:input message="tns:GetCouncilorsJSONSoapIn" />
+      <wsdl:output message="tns:GetCouncilorsJSONSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SearchLLPGserviceHttpGet">
+    <wsdl:operation name="Get_Connection">
+      <wsdl:input message="tns:Get_ConnectionHttpGetIn" />
+      <wsdl:output message="tns:Get_ConnectionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindStreetByUSRN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of streets by entering a USRN</wsdl:documentation>
+      <wsdl:input message="tns:FindStreetByUSRNHttpGetIn" />
+      <wsdl:output message="tns:FindStreetByUSRNHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUPRN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list properties by entering a UPRN</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressByUPRNHttpGetIn" />
+      <wsdl:output message="tns:FindAddressByUPRNHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindStreet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of streets exactly matching the entered name</wsdl:documentation>
+      <wsdl:input message="tns:FindStreetHttpGetIn" />
+      <wsdl:output message="tns:FindStreetHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties using individual address elements</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressHttpGetIn" />
+      <wsdl:output message="tns:FindAddressHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressEx">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Enter street, number &amp; street, Building name, UPRN,USRN, or Postcode. This is the operation most used by calling applications to find an LLPG address.</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressExHttpGetIn" />
+      <wsdl:output message="tns:FindAddressExHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUSRN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by entering the USRN of a street</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressByUSRNHttpGetIn" />
+      <wsdl:output message="tns:FindAddressByUSRNHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByLines">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties. Convenience function provided for CRM to search by indivdual address elements</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressByLinesHttpGetIn" />
+      <wsdl:output message="tns:FindAddressByLinesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetsBeginingWith">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns list of streets begining with the entered text</wsdl:documentation>
+      <wsdl:input message="tns:GetStreetsBeginingWithHttpGetIn" />
+      <wsdl:output message="tns:GetStreetsBeginingWithHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindMyNearestService">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns list of properties that match the passed BLPU class, ordered by the distance from the passed coordinate</wsdl:documentation>
+      <wsdl:input message="tns:FindMyNearestServiceHttpGetIn" />
+      <wsdl:output message="tns:FindMyNearestServiceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNsStr">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties by matching the UPRNs extracted from a delimited string of UPRNs</wsdl:documentation>
+      <wsdl:input message="tns:GetAddressesByUPRNsStrHttpGetIn" />
+      <wsdl:output message="tns:GetAddressesByUPRNsStrHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNs">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties matching an array of long integers</wsdl:documentation>
+      <wsdl:input message="tns:GetAddressesByUPRNsHttpGetIn" />
+      <wsdl:output message="tns:GetAddressesByUPRNsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressByCrossRef">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties matching the entered cross reference source and its value</wsdl:documentation>
+      <wsdl:input message="tns:GetAddressByCrossRefHttpGetIn" />
+      <wsdl:output message="tns:GetAddressByCrossRefHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlights">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties that represent places of particular interest within Hackney</wsdl:documentation>
+      <wsdl:input message="tns:GetHighlightsHttpGetIn" />
+      <wsdl:output message="tns:GetHighlightsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCrossReferences">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of cross references associated with the entered UPRN</wsdl:documentation>
+      <wsdl:input message="tns:GetCrossReferencesHttpGetIn" />
+      <wsdl:output message="tns:GetCrossReferencesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of extra attributes associated with the entered UPRN</wsdl:documentation>
+      <wsdl:input message="tns:GetPropertyAttributesHttpGetIn" />
+      <wsdl:output message="tns:GetPropertyAttributesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes2">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of extra attributes associated with the entered UPRN</wsdl:documentation>
+      <wsdl:input message="tns:GetPropertyAttributes2HttpGetIn" />
+      <wsdl:output message="tns:GetPropertyAttributes2HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlightsJSONtree">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties that represent places of particular interest within Hackney. Formatted as a Javascript Object Notation (JSON) array representing a tree structured result set</wsdl:documentation>
+      <wsdl:input message="tns:GetHighlightsJSONtreeHttpGetIn" />
+      <wsdl:output message="tns:GetHighlightsJSONtreeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtree">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Formatted as a Javascript Object Notation (JSON) array representing a paged tree structured result set.</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressJSONtreeHttpGetIn" />
+      <wsdl:output message="tns:FindAddressJSONtreeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtreeTheme">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Formatted as a Javascript Object Notation (JSON) array representing a paged tree structured result set. Results are JSON encoded coloured according to theme. Theme 1 = Cross reference, theme 2 = usage</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressJSONtreeThemeHttpGetIn" />
+      <wsdl:output message="tns:FindAddressJSONtreeThemeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressCSV">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Formatted as comma seperated values, CSV</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressCSVHttpGetIn" />
+      <wsdl:output message="tns:FindAddressCSVHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorHTML">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return councilor details for a given address or postcode. Formatted as HTML</wsdl:documentation>
+      <wsdl:input message="tns:GetCouncilorHTMLHttpGetIn" />
+      <wsdl:output message="tns:GetCouncilorHTMLHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestStreet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Formatted as a Javascript Object Notation (JSON) array representing a paged tree structured result set.</wsdl:documentation>
+      <wsdl:input message="tns:GetNearestStreetHttpGetIn" />
+      <wsdl:output message="tns:GetNearestStreetHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestAddress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return list of properties by distance from the entered coordinate. Specify if coordinates are geodetic / lat &amp; lon (isGeo = true) and how many records to be returned</wsdl:documentation>
+      <wsdl:input message="tns:GetNearestAddressHttpGetIn" />
+      <wsdl:output message="tns:GetNearestAddressHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWardPostcodeStreetList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return list of post codes with street name and electoral ward. Optionally by street name</wsdl:documentation>
+      <wsdl:input message="tns:GetWardPostcodeStreetListHttpGetIn" />
+      <wsdl:output message="tns:GetWardPostcodeStreetListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorsJSON">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return all councilor details. Formatted as Javascript Object Notation (JSON)</wsdl:documentation>
+      <wsdl:input message="tns:GetCouncilorsJSONHttpGetIn" />
+      <wsdl:output message="tns:GetCouncilorsJSONHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SearchLLPGserviceHttpPost">
+    <wsdl:operation name="Get_Connection">
+      <wsdl:input message="tns:Get_ConnectionHttpPostIn" />
+      <wsdl:output message="tns:Get_ConnectionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindStreetByUSRN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of streets by entering a USRN</wsdl:documentation>
+      <wsdl:input message="tns:FindStreetByUSRNHttpPostIn" />
+      <wsdl:output message="tns:FindStreetByUSRNHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUPRN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list properties by entering a UPRN</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressByUPRNHttpPostIn" />
+      <wsdl:output message="tns:FindAddressByUPRNHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindStreet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of streets exactly matching the entered name</wsdl:documentation>
+      <wsdl:input message="tns:FindStreetHttpPostIn" />
+      <wsdl:output message="tns:FindStreetHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties using individual address elements</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressHttpPostIn" />
+      <wsdl:output message="tns:FindAddressHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressEx">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Enter street, number &amp; street, Building name, UPRN,USRN, or Postcode. This is the operation most used by calling applications to find an LLPG address.</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressExHttpPostIn" />
+      <wsdl:output message="tns:FindAddressExHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUSRN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by entering the USRN of a street</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressByUSRNHttpPostIn" />
+      <wsdl:output message="tns:FindAddressByUSRNHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByLines">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties. Convenience function provided for CRM to search by indivdual address elements</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressByLinesHttpPostIn" />
+      <wsdl:output message="tns:FindAddressByLinesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetsBeginingWith">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns list of streets begining with the entered text</wsdl:documentation>
+      <wsdl:input message="tns:GetStreetsBeginingWithHttpPostIn" />
+      <wsdl:output message="tns:GetStreetsBeginingWithHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindMyNearestService">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns list of properties that match the passed BLPU class, ordered by the distance from the passed coordinate</wsdl:documentation>
+      <wsdl:input message="tns:FindMyNearestServiceHttpPostIn" />
+      <wsdl:output message="tns:FindMyNearestServiceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNsStr">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties by matching the UPRNs extracted from a delimited string of UPRNs</wsdl:documentation>
+      <wsdl:input message="tns:GetAddressesByUPRNsStrHttpPostIn" />
+      <wsdl:output message="tns:GetAddressesByUPRNsStrHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNs">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties matching an array of long integers</wsdl:documentation>
+      <wsdl:input message="tns:GetAddressesByUPRNsHttpPostIn" />
+      <wsdl:output message="tns:GetAddressesByUPRNsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressByCrossRef">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties matching the entered cross reference source and its value</wsdl:documentation>
+      <wsdl:input message="tns:GetAddressByCrossRefHttpPostIn" />
+      <wsdl:output message="tns:GetAddressByCrossRefHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlights">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties that represent places of particular interest within Hackney</wsdl:documentation>
+      <wsdl:input message="tns:GetHighlightsHttpPostIn" />
+      <wsdl:output message="tns:GetHighlightsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCrossReferences">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of cross references associated with the entered UPRN</wsdl:documentation>
+      <wsdl:input message="tns:GetCrossReferencesHttpPostIn" />
+      <wsdl:output message="tns:GetCrossReferencesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of extra attributes associated with the entered UPRN</wsdl:documentation>
+      <wsdl:input message="tns:GetPropertyAttributesHttpPostIn" />
+      <wsdl:output message="tns:GetPropertyAttributesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes2">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of extra attributes associated with the entered UPRN</wsdl:documentation>
+      <wsdl:input message="tns:GetPropertyAttributes2HttpPostIn" />
+      <wsdl:output message="tns:GetPropertyAttributes2HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlightsJSONtree">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of properties that represent places of particular interest within Hackney. Formatted as a Javascript Object Notation (JSON) array representing a tree structured result set</wsdl:documentation>
+      <wsdl:input message="tns:GetHighlightsJSONtreeHttpPostIn" />
+      <wsdl:output message="tns:GetHighlightsJSONtreeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtree">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Formatted as a Javascript Object Notation (JSON) array representing a paged tree structured result set.</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressJSONtreeHttpPostIn" />
+      <wsdl:output message="tns:FindAddressJSONtreeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtreeTheme">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Formatted as a Javascript Object Notation (JSON) array representing a paged tree structured result set. Results are JSON encoded coloured according to theme. Theme 1 = Cross reference, theme 2 = usage</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressJSONtreeThemeHttpPostIn" />
+      <wsdl:output message="tns:FindAddressJSONtreeThemeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressCSV">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Formatted as comma seperated values, CSV</wsdl:documentation>
+      <wsdl:input message="tns:FindAddressCSVHttpPostIn" />
+      <wsdl:output message="tns:FindAddressCSVHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorHTML">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return councilor details for a given address or postcode. Formatted as HTML</wsdl:documentation>
+      <wsdl:input message="tns:GetCouncilorHTMLHttpPostIn" />
+      <wsdl:output message="tns:GetCouncilorHTMLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestStreet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of properties by free text entry. Formatted as a Javascript Object Notation (JSON) array representing a paged tree structured result set.</wsdl:documentation>
+      <wsdl:input message="tns:GetNearestStreetHttpPostIn" />
+      <wsdl:output message="tns:GetNearestStreetHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestAddress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return list of properties by distance from the entered coordinate. Specify if coordinates are geodetic / lat &amp; lon (isGeo = true) and how many records to be returned</wsdl:documentation>
+      <wsdl:input message="tns:GetNearestAddressHttpPostIn" />
+      <wsdl:output message="tns:GetNearestAddressHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWardPostcodeStreetList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return list of post codes with street name and electoral ward. Optionally by street name</wsdl:documentation>
+      <wsdl:input message="tns:GetWardPostcodeStreetListHttpPostIn" />
+      <wsdl:output message="tns:GetWardPostcodeStreetListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorsJSON">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return all councilor details. Formatted as Javascript Object Notation (JSON)</wsdl:documentation>
+      <wsdl:input message="tns:GetCouncilorsJSONHttpPostIn" />
+      <wsdl:output message="tns:GetCouncilorsJSONHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SearchLLPGserviceSoap" type="tns:SearchLLPGserviceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get_Connection">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/Get_Connection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindStreetByUSRN">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindStreetByUSRN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUPRN">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressByUPRN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindStreet">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindStreet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddress">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressEx">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUSRN">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressByUSRN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByLines">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressByLines" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetsBeginingWith">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetStreetsBeginingWith" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindMyNearestService">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindMyNearestService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNsStr">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetAddressesByUPRNsStr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNs">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetAddressesByUPRNs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressByCrossRef">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetAddressByCrossRef" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlights">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetHighlights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCrossReferences">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetCrossReferences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetPropertyAttributes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes2">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetPropertyAttributes2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlightsJSONtree">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetHighlightsJSONtree" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtree">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressJSONtree" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtreeTheme">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressJSONtreeTheme" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressCSV">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressCSV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorHTML">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetCouncilorHTML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestStreet">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetNearestStreet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestAddress">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetNearestAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWardPostcodeStreetList">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetWardPostcodeStreetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorsJSON">
+      <soap:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetCouncilorsJSON" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SearchLLPGserviceSoap12" type="tns:SearchLLPGserviceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get_Connection">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/Get_Connection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindStreetByUSRN">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindStreetByUSRN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUPRN">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressByUPRN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindStreet">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindStreet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddress">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressEx">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUSRN">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressByUSRN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByLines">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressByLines" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetsBeginingWith">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetStreetsBeginingWith" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindMyNearestService">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindMyNearestService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNsStr">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetAddressesByUPRNsStr" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNs">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetAddressesByUPRNs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressByCrossRef">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetAddressByCrossRef" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlights">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetHighlights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCrossReferences">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetCrossReferences" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetPropertyAttributes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes2">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetPropertyAttributes2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlightsJSONtree">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetHighlightsJSONtree" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtree">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressJSONtree" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtreeTheme">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressJSONtreeTheme" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressCSV">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/FindAddressCSV" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorHTML">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetCouncilorHTML" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestStreet">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetNearestStreet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestAddress">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetNearestAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWardPostcodeStreetList">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetWardPostcodeStreetList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorsJSON">
+      <soap12:operation soapAction="http://www.hackney.gov.uk/SearchLLPG/GetCouncilorsJSON" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SearchLLPGserviceHttpGet" type="tns:SearchLLPGserviceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Get_Connection">
+      <http:operation location="/Get_Connection" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindStreetByUSRN">
+      <http:operation location="/FindStreetByUSRN" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUPRN">
+      <http:operation location="/FindAddressByUPRN" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindStreet">
+      <http:operation location="/FindStreet" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddress">
+      <http:operation location="/FindAddress" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressEx">
+      <http:operation location="/FindAddressEx" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUSRN">
+      <http:operation location="/FindAddressByUSRN" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByLines">
+      <http:operation location="/FindAddressByLines" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetsBeginingWith">
+      <http:operation location="/GetStreetsBeginingWith" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindMyNearestService">
+      <http:operation location="/FindMyNearestService" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNsStr">
+      <http:operation location="/GetAddressesByUPRNsStr" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNs">
+      <http:operation location="/GetAddressesByUPRNs" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressByCrossRef">
+      <http:operation location="/GetAddressByCrossRef" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlights">
+      <http:operation location="/GetHighlights" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCrossReferences">
+      <http:operation location="/GetCrossReferences" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes">
+      <http:operation location="/GetPropertyAttributes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes2">
+      <http:operation location="/GetPropertyAttributes2" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlightsJSONtree">
+      <http:operation location="/GetHighlightsJSONtree" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtree">
+      <http:operation location="/FindAddressJSONtree" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtreeTheme">
+      <http:operation location="/FindAddressJSONtreeTheme" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressCSV">
+      <http:operation location="/FindAddressCSV" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorHTML">
+      <http:operation location="/GetCouncilorHTML" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestStreet">
+      <http:operation location="/GetNearestStreet" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestAddress">
+      <http:operation location="/GetNearestAddress" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWardPostcodeStreetList">
+      <http:operation location="/GetWardPostcodeStreetList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorsJSON">
+      <http:operation location="/GetCouncilorsJSON" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SearchLLPGserviceHttpPost" type="tns:SearchLLPGserviceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Get_Connection">
+      <http:operation location="/Get_Connection" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindStreetByUSRN">
+      <http:operation location="/FindStreetByUSRN" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUPRN">
+      <http:operation location="/FindAddressByUPRN" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindStreet">
+      <http:operation location="/FindStreet" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddress">
+      <http:operation location="/FindAddress" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressEx">
+      <http:operation location="/FindAddressEx" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByUSRN">
+      <http:operation location="/FindAddressByUSRN" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressByLines">
+      <http:operation location="/FindAddressByLines" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetsBeginingWith">
+      <http:operation location="/GetStreetsBeginingWith" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindMyNearestService">
+      <http:operation location="/FindMyNearestService" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNsStr">
+      <http:operation location="/GetAddressesByUPRNsStr" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressesByUPRNs">
+      <http:operation location="/GetAddressesByUPRNs" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressByCrossRef">
+      <http:operation location="/GetAddressByCrossRef" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlights">
+      <http:operation location="/GetHighlights" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCrossReferences">
+      <http:operation location="/GetCrossReferences" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes">
+      <http:operation location="/GetPropertyAttributes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyAttributes2">
+      <http:operation location="/GetPropertyAttributes2" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHighlightsJSONtree">
+      <http:operation location="/GetHighlightsJSONtree" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtree">
+      <http:operation location="/FindAddressJSONtree" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressJSONtreeTheme">
+      <http:operation location="/FindAddressJSONtreeTheme" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAddressCSV">
+      <http:operation location="/FindAddressCSV" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorHTML">
+      <http:operation location="/GetCouncilorHTML" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestStreet">
+      <http:operation location="/GetNearestStreet" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestAddress">
+      <http:operation location="/GetNearestAddress" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWardPostcodeStreetList">
+      <http:operation location="/GetWardPostcodeStreetList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouncilorsJSON">
+      <http:operation location="/GetCouncilorsJSON" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SearchLLPGservice">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Address look-up service using Hackneys LLPG.</wsdl:documentation>
+    <wsdl:port name="SearchLLPGserviceSoap" binding="tns:SearchLLPGserviceSoap">
+      <soap:address location="http://lbhgisnetp01/nlpg/SearchLLPG.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SearchLLPGserviceSoap12" binding="tns:SearchLLPGserviceSoap12">
+      <soap12:address location="http://lbhgisnetp01/nlpg/SearchLLPG.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SearchLLPGserviceHttpGet" binding="tns:SearchLLPGserviceHttpGet">
+      <http:address location="http://lbhgisnetp01/nlpg/SearchLLPG.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SearchLLPGserviceHttpPost" binding="tns:SearchLLPGserviceHttpPost">
+      <http:address location="http://lbhgisnetp01/nlpg/SearchLLPG.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

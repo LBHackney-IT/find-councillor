@@ -1,0 +1,363 @@
+﻿
+.golink {
+    color: Maroon;
+}
+
+a.golink {
+    color: Maroon;
+}
+
+a.golink:active {
+    color: Maroon;
+}
+
+a.golink:visited {
+    color: Maroon;
+}
+
+a.golink:hover {
+    color: Maroon;
+}
+
+a.nodetext {
+    color: #000000;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.nodetext a {
+    color: #000000;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+a.nodetext:hover {
+    background-color: Yellow;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+a.nodetext:active {
+    background-color: Yellow;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.nodetext a:hover {
+    background-color: Yellow;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+a.nodetext:visited {
+    color: #000000;
+    font-weight: normal;
+}
+
+.nodetext a:visited {
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.nodetext {
+    color: #004000;
+}
+
+a.nodetext {
+    color: #004000;
+}
+
+.nodetext a {
+    color: #004000;
+}
+
+a.nodetext:visited {
+    color: #004000;
+}
+
+.nodetext a:visited {
+    color: #004000;
+}
+
+.x-tree-node-collapsed .streeticon, .x-tree-node-expanded .streeticon, .x-tree-node-leaf .streeticon {
+    background-image: url(../images/Street.bmp);
+}
+
+.x-tree-node-collapsed .paonicon, x-tree-node-expanded .paonicon, .x-tree-node-leaf .paonicon {
+    background-image: url(../images/prefPostalPrimary.bmp);
+}
+
+.x-tree-node-collapsed .saonicon, x-tree-node-expanded .saonicon, .x-tree-node-leaf .saonicon {
+    background-image: url(../images/PreferredSecondary.bmp);
+}
+
+.x-tree-node-collapsed .legenditem, x-tree-node-expanded .legenditem, .x-tree-node-leaf .legenditem {
+    background-image: none;
+  
+}
+
+.x-tree-node{
+    background-image:none;
+    background-repeat:no-repeat;
+
+}
+
+.x-layout-panel-north {
+    border: 0px none;
+}
+
+.bodytext {
+    font: normal 8pt arial, helvetica;
+    text-align: left;
+    list-style: decimal;
+}
+
+.comboresults {
+    font: normal 8pt arial, helvetica;
+    text-align: left;
+}
+
+#nav {
+    background: #006633 url(back01.gif) repeat-x;
+}
+
+#nearest, #center {
+    font: normal 8pt arial, helvetica;
+    text-align: left !important;
+    padding: 10px;
+}
+
+#north, #south {
+    font: normal 8pt arial, helvetica;
+    text-align: left;
+    padding: 4px;
+}
+
+#west {
+    font: normal 8pt arial, helvetica;
+    text-align: left;
+    padding: 0px;
+}
+
+.x-layout-panel-center p {
+    margin: 5px;
+}
+
+#props-panel .x-grid-col-0 {
+}
+
+#props-panel .x-grid-col-1 {
+}
+
+#loading {
+    position: absolute;
+    visibility: hidden;
+    left: 50%;
+    top: 50%;
+    border: 1px solid #006633;
+    padding: 2px;
+    margin-left: -305px;
+    margin-top: -175px;
+    background: #c6d6d6;
+    width: 610px;
+    height: 350px;
+    z-index: 20002;
+}
+
+#loading2 {
+    position: absolute;
+    left: 45%;
+    top: 40%;
+    border: 1px solid #006633;
+    padding: 2px;
+    background: #c6d6d6;
+    width: 220px;
+    text-align: center;
+    z-index: 20001;
+}
+
+#loading2 .loading-indicator {
+    border: 1px solid #a3bad9;
+    background: white url(block-bg.gif) repeat-x;
+    color: #006633;
+    font: bold 13px tahoma, arial, helvetica;
+    padding: 10px;
+    margin: 0;
+}
+
+v\:* {
+
+behavior:
+    url(#default#VML);
+}
+
+.homestable {
+    background-image: url(images/hackneyhomes-small.gif);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+}
+
+#disclaimdiv {
+    font: normal 9pt arial, helvetica;
+    padding: 5px;
+    text-align: left;
+    list-style-type: decimal;
+}
+
+.provnode {
+    background-color: #98FB98;
+}
+
+
+/* accordion example specific styles */
+.text-content {
+	padding: 10px;
+/*	border-bottom: 1px solid #A9BFD3; */
+}
+.text-content p {
+	margin-bottom: 10px;
+}
+.text-content ul {
+/*	list-style-image: inherit; */
+	list-style-position: inside;
+	list-style-type: disc;
+	margin-bottom: 4px;
+}
+
+.view-content{
+     text-align:left;    
+}
+
+.x-panel-header{
+    text-align:left;
+}
+
+.tb-field{margin:0;font:normal 24px tahoma,arial,helvetica,sans-serif;height:35}
+
+.x-link-icon{
+    background-image: url(https://map.hackney.gov.uk/Icons/silk/link.png) !important;   
+}
+
+.msg .x-box-mc {
+    font-size:14px;
+}
+#msg-div {
+    position:absolute;
+    left:35%;
+    top:10px;
+    width:250px;
+    z-index:20000;
+}
+
+.helptext {
+    font: normal 10pt arial, helvetica;
+    text-align: left;
+}
+
+.directdiv {
+    font: normal 10pt arial, helvetica;
+    text-align: left;
+    width:250px;
+}
+
+.x-search-icon{
+  background-image: url(https://map.hackney.gov.uk/Icons/silk/house.png) !important;     
+}
+.x-democ-icon{
+  background-image: url(https://map.hackney.gov.uk/Icons/silk/group.png) !important;     
+}
+.x-eviron-icon{
+  background-image: url(https://map.hackney.gov.uk/Icons/silk/world.png) !important;     
+}
+.x-edu-icon{
+  background-image: url(https://map.hackney.gov.uk/Icons/silk/book_open.png) !important;     
+}
+.x-health-icon{
+  background-image: url(https://map.hackney.gov.uk/Icons/silk/eye.png) !important;     
+}
+.x-neigh-icon{
+  background-image: url(https://map.hackney.gov.uk/Icons/silk/house_go.png) !important;     
+}
+.x-park-icon{
+  background-image: url(https://map.hackney.gov.uk/Icons/silk/car.png) !important;     
+}
+.x-near-icon{
+  background-image: url(https://map.hackney.gov.uk/Icons/silk/find.png) !important;     
+}
+
+#mapbar {
+    text-align: left;
+}
+
+.x-tb-center
+{
+    text-align:center;
+}
+
+div.hkdetails
+{
+    border-color: #E0E0E0 #E0E0E0 #B3B3B3;
+    border-style:solid;
+    border-width: 0 0 1px 0;
+    height:auto;  
+    
+}
+
+div.cparty
+{
+    float:right;
+    
+}
+
+div.cname
+{
+  float:left; 
+  text-align:left;
+  font-weight:bold; 
+}
+
+div.lname
+{
+  font-weight:bold; 
+}
+
+div.wname h2
+{
+  float:left;
+  color: #9C1E3D;
+  font-size: 111%;
+
+}
+
+.hkbox
+{
+ background:#F0F9F7;   
+}
+
+.hkdetails ul,hkdetails li
+{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  clear:both;  
+    
+    
+}
+
+.gtxt
+{
+ color:Gray;   
+}
+
+.btxt
+{
+ color:Black;   
+}
+
+
+
+
+
